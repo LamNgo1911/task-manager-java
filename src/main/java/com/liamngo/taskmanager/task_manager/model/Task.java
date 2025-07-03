@@ -12,7 +12,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "tasks")
 public class Task {
-    @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

@@ -1,5 +1,6 @@
 package com.liamngo.taskmanager.task_manager.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,11 +12,13 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskCreateDto {
-    @NotNull(message = "Title can not be null.") private String title;
+    @NotNull(message = "Title can not be null.")
+    private String title;
 
     @NotNull(message = "Description can not be null.")
     private String description;
 
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @NotNull(message = "Date can not be null.")
     private Date deadline;
 }
