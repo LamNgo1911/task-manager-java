@@ -28,9 +28,9 @@ public class GobalExceptionHandler {
     }
 
     @ExceptionHandler({TaskNotFoundException.class})
-    public ResponseEntity<Object> handleStudentNotFoundException(TaskNotFoundException exception) {
+    public ResponseEntity<Object> handleTaskNotFoundException(TaskNotFoundException exception) {
         return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .status(HttpStatus.BAD_REQUEST)
                 .body(exception.getMessage());
     }
 }

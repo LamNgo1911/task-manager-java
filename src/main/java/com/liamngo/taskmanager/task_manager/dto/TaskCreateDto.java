@@ -18,7 +18,6 @@ public class TaskCreateDto {
     @NotNull(message = "Description can not be null.")
     private String description;
 
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @NotNull(message = "Date can not be null.")
     private Date deadline;
 }
