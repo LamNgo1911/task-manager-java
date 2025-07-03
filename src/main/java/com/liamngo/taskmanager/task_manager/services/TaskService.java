@@ -3,6 +3,7 @@ package com.liamngo.taskmanager.task_manager.services;
 import com.liamngo.taskmanager.task_manager.dto.TaskCreateDto;
 import com.liamngo.taskmanager.task_manager.dto.TaskReadDto;
 import com.liamngo.taskmanager.task_manager.dto.TaskUpdateDto;
+import com.liamngo.taskmanager.task_manager.exception.TaskNotFoundException;
 import com.liamngo.taskmanager.task_manager.mapper.TaskMapper;
 import com.liamngo.taskmanager.task_manager.model.Task;
 import com.liamngo.taskmanager.task_manager.repository.TaskJpaRepo;
@@ -45,7 +46,7 @@ public class TaskService {
 
     public TaskReadDto getOneTask(Long id) {
         try {
-            return taskMapper.toTaskReadDto(taskJpaRepo.findById(id).orElseThrow(() -> new RuntimeException("Task not found with id: " + id)));
+            return taskMapper.toTaskReadDto(taskJpaRepo.findById(id).orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + id)));
         } catch (Exception e) {logger.error("Error updating task: {}", e.getMessage(), e);
             throw new RuntimeException(e);
         }
@@ -53,7 +54,7 @@ public class TaskService {
 
     public void updateTask(Long id, TaskUpdateDto taskUpdateDto) {
         try {
-            Task task = taskJpaRepo.findById(id).orElseThrow(() -> new RuntimeException("Task not found with id: " + id));
+            Task task = taskJpaRepo.findById(id).orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + id));
 
             taskMapper.updateTaskFromDto(taskUpdateDto, task);
 

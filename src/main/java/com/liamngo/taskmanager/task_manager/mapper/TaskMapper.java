@@ -12,7 +12,6 @@ import java.util.List;
 public interface TaskMapper {
     TaskReadDto toTaskReadDto(Task task);
 
-    @Mapping(target = "id", ignore = true)
     Task toTask(TaskCreateDto taskCreateDto);
 
     List<TaskReadDto> toListTaskReadDto(List<Task> tasks);
