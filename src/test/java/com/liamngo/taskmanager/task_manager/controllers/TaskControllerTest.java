@@ -56,4 +56,18 @@ public class TaskControllerTest {
                 .andExpect(jsonPath("$.title").value("1"))
                 .andExpect(jsonPath("$.description").value("2"));
     }
+
+    @Test
+    void ShouldThrowBadRequest() throws Exception {
+        // Arrange
+        TaskCreateDto example = new TaskCreateDto();
+        example.setTitle("1");
+        example.setDeadline(Date.from(Instant.now()));
+
+        // Act & Assert
+        mockMvc.perform(post("/api/v1/tasks")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(example)))
+                .andExpect(status().isBadRequest());
+    }
 }
