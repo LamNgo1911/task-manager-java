@@ -70,4 +70,9 @@ public class TaskControllerTest {
                         .content(objectMapper.writeValueAsString(example)))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    void ShouldGet_AllTasks() throws Exception {
+
+    }
 }
