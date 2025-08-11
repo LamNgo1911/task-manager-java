@@ -75,4 +75,11 @@ public class TaskControllerTest {
     void ShouldGet_AllTasks() throws Exception {
 
     }
+
+    @Test
+    void ShouldGet_OneTask() throws Exception {
+
+    }
+
+
 }
